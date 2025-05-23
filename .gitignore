@@ -1,0 +1,10 @@
+Build/
+VRTemplate/Library/
+VRTemplate/Temp/StagingArea/gradleWarmupArea/.gradle/7.2/executionHistory/executionHistory.lock
+VRTemplate/Temp/
+VRTemplate/Logs/
+VRTemplate/UserSettings/
+VRTemplate/obj/
+VRTemplate/.vs/
+*.csproj
+*.sln
