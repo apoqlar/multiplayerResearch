@@ -8,3 +8,4 @@ VRTemplate/obj/
 VRTemplate/.vs/
 *.csproj
 *.sln
+VRTemplate/.utmp/
