@@ -45,6 +45,12 @@ public class SessionManager : MonoBehaviour
         sceneManager.OnLoadEnd += OnSceneLoaded;
     }
 
+    private void OnDestroy()
+    {
+        networkManager.ServerManager.OnServerConnectionState -= ServerManager_OnServerConnectionState;
+        networkManager.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
+    }
+
     public void StartServerFlow()
     {
         networkManager.ServerManager.StartConnection(port);
