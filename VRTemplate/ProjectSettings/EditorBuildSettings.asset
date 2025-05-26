@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaseScene.unity
     guid: d664a00cd02144348b8edc438439c60c
+  - enabled: 1
+    path: Assets/Scenes/Fishnet/BootstrapScene.unity
+    guid: 1ee7309be7392df4a8a7ab7f096baa5f
+  - enabled: 1
+    path: Assets/Scenes/Fishnet/LobbyScene.unity
+    guid: d92cc2499a2be3349a4c19ec8b6cebf9
+  - enabled: 1
+    path: Assets/Scenes/Fishnet/RedRoom.unity
+    guid: cae863d9198d9784e9066a66badcabc3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 58b75da5f7eed0f44aba7d79c13037b6, type: 2}
