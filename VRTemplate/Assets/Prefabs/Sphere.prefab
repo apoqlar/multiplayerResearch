@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 7108825941592742442}
   - component: {fileID: 2872899988712972779}
   - component: {fileID: 2584350380063277399}
-  - component: {fileID: 3841704514015065175}
+  - component: {fileID: 6372014074757672018}
+  - component: {fileID: 1409932245603419934}
+  - component: {fileID: 952443983236783185}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -140,7 +142,7 @@ MonoBehaviour:
   _isGlobal: 0
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 1
-  _defaultDespawnType: 0
+  _defaultDespawnType: 1
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -179,7 +181,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2872899988712972779}
   _networkObjectCache: {fileID: 2872899988712972779}
---- !u!114 &3841704514015065175
+--- !u!114 &6372014074757672018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,8 +204,8 @@ MonoBehaviour:
     Scale: 0
   _interpolation: 2
   _extrapolation: 2
-  _enableTeleport: 1
-  _teleportThreshold: 0.1
+  _enableTeleport: 0
+  _teleportThreshold: 1
   _clientAuthoritative: 1
   _sendToOwner: 1
   _interval: 1
@@ -222,3 +224,36 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &1409932245603419934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524938646224659706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2a43e0ebb618d448fec93ef09918fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2872899988712972779}
+  _networkObjectCache: {fileID: 0}
+  sendMessage: 0
+--- !u!114 &952443983236783185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524938646224659706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b597e1828355a4d994a69cbb11ef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2872899988712972779}
+  _networkObjectCache: {fileID: 0}
+  _allowSpawning: 1
+  _allowDespawning: 1
