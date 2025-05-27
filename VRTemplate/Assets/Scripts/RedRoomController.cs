@@ -10,4 +10,9 @@ public class RedRoomController : NetworkBehaviour
     {
         spawner.SpawnObject("sphere", LocalConnection);
     }
+
+    public void SpawnCube()
+    {
+        spawner.SpawnObject("cube", LocalConnection);
+    }
 }

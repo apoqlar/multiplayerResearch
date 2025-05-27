@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: _playerPrefab
       value: 
-      objectReference: {fileID: 8548673574740432718, guid: a72c0dc9a8f091b479c5330939200fd3, type: 3}
+      objectReference: {fileID: 8548673574740432718, guid: 84c2d49590c38e84bbdd165d4e8ebca3, type: 3}
     - target: {fileID: 8525056661597615361, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -248,7 +248,7 @@ PrefabInstance:
       addedObject: {fileID: 632557192}
     - targetCorrespondingSourceObject: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 632557195}
+      addedObject: {fileID: 632557198}
   m_SourcePrefab: {fileID: 100100000, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
 --- !u!1 &53900245 stripped
 GameObject:
@@ -342,8 +342,8 @@ MonoBehaviour:
     asset: {fileID: 102900000, guid: d92cc2499a2be3349a4c19ec8b6cebf9, type: 3}
     guid: d92cc2499a2be3349a4c19ec8b6cebf9
   redRoomScene:
-    asset: {fileID: 102900000, guid: cae863d9198d9784e9066a66badcabc3, type: 3}
-    guid: cae863d9198d9784e9066a66badcabc3
+    asset: {fileID: 102900000, guid: 9e02b589a6cf7ff44960944bcf3ed597, type: 3}
+    guid: 9e02b589a6cf7ff44960944bcf3ed597
   address: localhost
   port: 7770
 --- !u!1 &100911490
@@ -644,7 +644,7 @@ MonoBehaviour:
   _useSceneContext: 0
   _context: {fileID: 2922812452129204784, guid: d154feadce3463647a2ee3269319a20c, type: 3}
   _bindType: 2
---- !u!114 &632557195
+--- !u!114 &632557198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -653,28 +653,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 53900245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  OnPreInstall:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPostInstall:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPreResolve:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPostResolve:
-    m_PersistentCalls:
-      m_Calls: []
-  _parentNewObjectsUnderSceneContext: 0
-  _contractNames: []
-  _parentContractNames: []
+  _containerSource: 1
 --- !u!1 &693510586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,37 +1162,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792087478}
   m_CullTransparentMesh: 1
---- !u!1 &1957113958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1957113961}
-  m_Layer: 0
-  m_Name: Context
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1957113961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957113958}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134482725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1302,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1957113961}
   - {fileID: 236481491}
   - {fileID: 53900244}
   - {fileID: 693510590}
