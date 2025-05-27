@@ -236,9 +236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a797984c7ea26541901ee7b9c38f6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 855312938893479864}
+  _networkObjectCache: {fileID: 0}
   grabInteractable: {fileID: 6091676373406007480}
   networkObject: {fileID: 855312938893479864}
   predictedOwner: {fileID: 6755040910798806556}
+  networkedBody: {fileID: 6091676373406007483}
 --- !u!114 &-7150653459805186661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,3 +276,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 855312938893479864}
   _networkObjectCache: {fileID: 0}
   _allowTakeOwnership: 1
+--- !u!54 &6091676373406007483 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5268460675038366900, guid: f5afcb7f49afad5419049090809f5cc7, type: 3}
+  m_PrefabInstance: {fileID: 2131520323928427535}
+  m_PrefabAsset: {fileID: 0}
