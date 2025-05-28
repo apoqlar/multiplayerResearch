@@ -1,5 +1,6 @@
 using FishNet.Component.Ownership;
 using FishNet.Object;
+using FishNet.Object.Prediction;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -21,27 +22,33 @@ public class NetworkedGrab : NetworkBehaviour
     private void Start()
     {
         Debug.Log("Network grab started");
-        predictedOwner.TakeOwnership(true);
-        grabInteractable.selectEntered.AddListener(OnSelectEntered);
-        grabInteractable.selectExited.AddListener(OnSelectExit);
+        //predictedOwner.TakeOwnership(true);
+        //grabInteractable.selectEntered.AddListener(OnSelectEntered);
+        //grabInteractable.selectExited.AddListener(OnSelectExit);
     }
 
     private void OnDestroy()
     {
-        grabInteractable.selectEntered.RemoveListener(OnSelectEntered);
-        grabInteractable.selectExited.RemoveListener(OnSelectExit);
+        //grabInteractable.selectEntered.RemoveListener(OnSelectEntered);
+        //grabInteractable.selectExited.RemoveListener(OnSelectExit);
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs args)
+    public void OnSelectEntering()
     {
-        Debug.Log($"Was owner: {networkObject.IsOwner}");
-        Debug.Log("Getting ownership");
         predictedOwner.TakeOwnership(true);
-        SyncProperties(networkedBody.isKinematic, networkedBody.useGravity);
-        Debug.Log($"Is owner: {networkObject.IsOwner}");
     }
 
-    private void OnSelectExit(SelectExitEventArgs args)
+    public void OnSelectExitting()
+    {
+
+    }
+
+    public void OnSelectEntered()
+    {
+        SyncProperties(networkedBody.isKinematic, networkedBody.useGravity);
+    }
+
+    public void OnSelectExited()
     {
         SyncProperties(networkedBody.isKinematic, networkedBody.useGravity);
     }
