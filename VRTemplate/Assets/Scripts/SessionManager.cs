@@ -40,6 +40,9 @@ public class SessionManager : MonoBehaviour
     private LocalConnectionState _serverState = LocalConnectionState.Stopped;
 
     private CancellationTokenSource _shutdownSource;
+    private int _port;
+
+    public static bool IsServer;
 
     public static SessionManager Instance { get; private set; }
 
@@ -69,11 +72,21 @@ public class SessionManager : MonoBehaviour
 
     public void StartServerFlow()
     {
+        IsServer = true;
+        _port = port;
         networkManager.ServerManager.StartConnection(port);
+    }
+
+    public void StartServerFlow(int port)
+    {
+        IsServer = true;
+        _port = port;
+        networkManager.ServerManager.StartConnection((ushort)port);
     }
 
     public async void StartClientFlow()
     {
+        IsServer= false;
         await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(lobbyScene.BuildIndex, UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
 
@@ -84,6 +97,11 @@ public class SessionManager : MonoBehaviour
     public void JoinSession()
     {
         networkManager.ClientManager.StartConnection(address, port);
+    }
+
+    public void JoinSession(string address, int port)
+    {
+        networkManager.ClientManager.StartConnection(address, (ushort)port);
     }
 
     private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
@@ -109,6 +127,7 @@ public class SessionManager : MonoBehaviour
     private void OnSceneLoaded(SceneLoadEndEventArgs obj)
     {
         Debug.Log("Scene loaded!");
+        MatchmakerCommunication.Instance.SendServerReady(_port).Forget();
     }
 
     private void ServerManager_OnRemoteConnectionState(FishNet.Connection.NetworkConnection arg1, RemoteConnectionStateArgs arg2)
