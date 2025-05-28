@@ -1,7 +1,10 @@
+using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
 using FishNet.Transporting;
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class SessionManager : MonoBehaviour
@@ -24,6 +27,9 @@ public class SessionManager : MonoBehaviour
     [SerializeField]
     private ushort port;
 
+    [SerializeField]
+    private float serverTimeToLiveInSeconds;
+
     /// <summary>
     /// Current state of client socket.
     /// </summary>
@@ -33,6 +39,8 @@ public class SessionManager : MonoBehaviour
     /// </summary>
     private LocalConnectionState _serverState = LocalConnectionState.Stopped;
 
+    private CancellationTokenSource _shutdownSource;
+
     public static SessionManager Instance { get; private set; }
 
     private void Awake()
@@ -40,6 +48,7 @@ public class SessionManager : MonoBehaviour
         Instance = this;
 
         networkManager.ServerManager.OnServerConnectionState += ServerManager_OnServerConnectionState;
+        networkManager.ServerManager.OnRemoteConnectionState += ServerManager_OnRemoteConnectionState;
         networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
 
         sceneManager.OnLoadEnd += OnSceneLoaded;
@@ -48,7 +57,14 @@ public class SessionManager : MonoBehaviour
     private void OnDestroy()
     {
         networkManager.ServerManager.OnServerConnectionState -= ServerManager_OnServerConnectionState;
+        networkManager.ServerManager.OnRemoteConnectionState -= ServerManager_OnRemoteConnectionState;
         networkManager.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
+
+        if (_shutdownSource != null)
+        {
+            _shutdownSource.Cancel();
+            _shutdownSource.Dispose();
+        }
     }
 
     public void StartServerFlow()
@@ -95,4 +111,64 @@ public class SessionManager : MonoBehaviour
         Debug.Log("Scene loaded!");
     }
 
+    private void ServerManager_OnRemoteConnectionState(FishNet.Connection.NetworkConnection arg1, RemoteConnectionStateArgs arg2)
+    {
+        Debug.Log($"Client did something, clients remaining: {networkManager.ServerManager.Clients.Count}!");
+        if (arg2.ConnectionState == RemoteConnectionState.Stopped)
+        {
+            Debug.Log($"Client left, clients remaining: {networkManager.ServerManager.Clients.Count}!");
+            if (!CheckIfClientsActive())
+            {
+                Debug.Log("All clients left!");
+                if (_shutdownSource != null)
+                {
+                    _shutdownSource.Cancel();
+                    _shutdownSource.Dispose();
+                }
+                _shutdownSource = new CancellationTokenSource();
+                CountdownToServerShutdown(_shutdownSource.Token).Forget();
+            }
+        }
+        if (arg2.ConnectionState == RemoteConnectionState.Started)
+        {
+            _shutdownSource?.Cancel();
+        }
+    }
+
+    private bool CheckIfClientsActive()
+    {
+        var clientsActive = false;
+        foreach (var kvp in networkManager.ServerManager.Clients)
+        {
+            if (kvp.Value.IsActive)
+            {
+                clientsActive = true;
+                break;
+            }
+        }
+        return clientsActive;
+    }
+
+    private async UniTask CountdownToServerShutdown(CancellationToken cancellationToken)
+    {
+        try
+        {
+            await UniTask.Delay((int)(serverTimeToLiveInSeconds * 1000), cancellationToken: cancellationToken, ignoreTimeScale: true);
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log("Shutdown canceled");
+            return;
+        }
+        if (CheckIfClientsActive())
+            return;
+        networkManager.ServerManager.StopConnection(false);
+        if (Application.isEditor)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+        Application.Quit();
+    }
 }

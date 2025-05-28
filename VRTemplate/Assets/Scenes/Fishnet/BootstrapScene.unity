@@ -346,6 +346,7 @@ MonoBehaviour:
     guid: 9e02b589a6cf7ff44960944bcf3ed597
   address: localhost
   port: 7770
+  serverTimeToLiveInSeconds: 3
 --- !u!1 &100911490
 GameObject:
   m_ObjectHideFlags: 0
