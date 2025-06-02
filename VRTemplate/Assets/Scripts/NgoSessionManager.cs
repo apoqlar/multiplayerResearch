@@ -1,12 +1,16 @@
 using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using Unity.Services.Lobbies;
 using Unity.Services.Multiplayer;
 using UnityEditor.PackageManager;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -125,7 +129,18 @@ public class NgoSessionManager : MonoBehaviour
             AuthenticationService.Instance.SwitchProfile(_profileName);
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-            if (MultiplayerService.Instance.Sessions.ContainsKey(_sessionName))
+            QuerySessionsOptions options = new QuerySessionsOptions
+            { 
+            };
+            var sessions = await MultiplayerService.Instance.QuerySessionsAsync(options);
+            var sessionExists = false;
+            foreach (var  session in sessions.Sessions)
+            {
+                Debug.Log($"Existing session: {session.Name}");
+                if (session.Name == _sessionName)
+                    sessionExists = true;
+            }
+            if (sessionExists)
             {
                 Debug.Log($"Session {_sessionName} exists, joining");
                 await JoinSessionAndScene();
@@ -155,7 +170,7 @@ public class NgoSessionManager : MonoBehaviour
                 MaxPlayers = _maxPlayers
             }.WithDistributedAuthorityNetwork();
 
-            _session = await MultiplayerService.Instance.CreateSessionAsync(options);
+            _session = await MultiplayerService.Instance.CreateOrJoinSessionAsync(_sessionName, options);
             _state = ConnectionState.Connected;
             await UniTask.WaitUntil(() => m_NetworkManager.LocalClient.IsSessionOwner);
             m_NetworkManager.SceneManager.LoadScene(redRoomScene.Name, UnityEngine.SceneManagement.LoadSceneMode.Additive);
@@ -171,7 +186,12 @@ public class NgoSessionManager : MonoBehaviour
     {
         try
         {
-            await MultiplayerService.Instance.JoinSessionByIdAsync(_sessionName);
+            var options = new SessionOptions()
+            {
+                Name = _sessionName,
+                MaxPlayers = _maxPlayers
+            }.WithDistributedAuthorityNetwork();
+            await MultiplayerService.Instance.CreateOrJoinSessionAsync(_sessionName, options);
         }
         catch (SessionException e)
         {

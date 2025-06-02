@@ -30,6 +30,7 @@ public class ObjectSpawnerNgo : MonoBehaviour
     public void SpawnObject()
     {
         var spawnedObject = _factory.Create(somePrefab).gameObject;
+        Debug.Log("is this called?");
         spawnedObject.GetComponent<NetworkObject>().Spawn();
     }
 }

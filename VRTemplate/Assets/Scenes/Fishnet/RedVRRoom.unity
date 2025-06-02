@@ -8227,6 +8227,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 2143466608}
   _networkObjectCache: {fileID: 0}
   spawner: {fileID: 2143466607}
+  spawnerNgo: {fileID: 0}
 --- !u!114 &2143466607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8783,7 +8784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2130331530761912218, guid: d661f645c81f29b4aa596207971ae441, type: 3}
       propertyPath: m_LastSelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SpawnCube
+      value: SpawnCubeNgo
       objectReference: {fileID: 0}
     - target: {fileID: 2130331530761912218, guid: d661f645c81f29b4aa596207971ae441, type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

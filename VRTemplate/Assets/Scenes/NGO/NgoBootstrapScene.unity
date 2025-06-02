@@ -799,8 +799,8 @@ GameObject:
   - component: {fileID: 7443408887864883577}
   - component: {fileID: 632557192}
   - component: {fileID: 632557198}
-  - component: {fileID: 7443408887864883576}
   - component: {fileID: 7443408887864883578}
+  - component: {fileID: 7443408887864883579}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -808,35 +808,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7443408887864883576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7443408887864883575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 637a7c36dc874286a7ac74b1aeabc1ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ProtocolType: 0
-  m_UseWebSockets: 0
-  m_UseEncryption: 0
-  m_MaxPacketQueueSize: 128
-  m_MaxPayloadSize: 6144
-  m_HeartbeatTimeoutMS: 500
-  m_ConnectTimeoutMS: 1000
-  m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
-  ConnectionData:
-    Address: 127.0.0.1
-    Port: 7777
-    ServerListenAddress: 127.0.0.1
-  DebugSimulator:
-    PacketDelayMS: 0
-    PacketJitterMS: 0
-    PacketDropRate: 0
 --- !u!114 &7443408887864883577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,7 +823,7 @@ MonoBehaviour:
   NetworkManagerExpanded: 0
   NetworkConfig:
     ProtocolVersion: 0
-    NetworkTransport: {fileID: 7443408887864883576}
+    NetworkTransport: {fileID: 7443408887864883579}
     PlayerPrefab: {fileID: 70463481428296162, guid: 9795cb7192db73f4681b72dbc243cce7, type: 3}
     Prefabs:
       NetworkPrefabsLists:
@@ -898,6 +869,35 @@ MonoBehaviour:
   redRoomScene:
     asset: {fileID: 102900000, guid: bd7bd60b3d909844da885462126adddb, type: 3}
     guid: bd7bd60b3d909844da885462126adddb
+--- !u!114 &7443408887864883579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443408887864883575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637a7c36dc874286a7ac74b1aeabc1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ProtocolType: 0
+  m_UseWebSockets: 0
+  m_UseEncryption: 0
+  m_MaxPacketQueueSize: 128
+  m_MaxPayloadSize: 6144
+  m_HeartbeatTimeoutMS: 500
+  m_ConnectTimeoutMS: 1000
+  m_MaxConnectAttempts: 60
+  m_DisconnectTimeoutMS: 30000
+  ConnectionData:
+    Address: 127.0.0.1
+    Port: 7777
+    ServerListenAddress: 127.0.0.1
+  DebugSimulator:
+    PacketDelayMS: 0
+    PacketJitterMS: 0
+    PacketDropRate: 0
 --- !u!222 &7515190914507662284
 CanvasRenderer:
   m_ObjectHideFlags: 0
