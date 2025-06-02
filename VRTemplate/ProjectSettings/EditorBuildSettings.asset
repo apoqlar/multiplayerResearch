@@ -8,18 +8,27 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BaseScene.unity
     guid: d664a00cd02144348b8edc438439c60c
-  - enabled: 1
-    path: Assets/Scenes/Fishnet/BootstrapScene.unity
+  - enabled: 0
+    path: Assets/Scenes/NGO/NgoBootstrapScene.unity
     guid: 1ee7309be7392df4a8a7ab7f096baa5f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fishnet/LobbyScene.unity
     guid: d92cc2499a2be3349a4c19ec8b6cebf9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fishnet/RedRoom.unity
     guid: cae863d9198d9784e9066a66badcabc3
   - enabled: 1
     path: Assets/Scenes/Fishnet/RedVRRoom.unity
     guid: 9e02b589a6cf7ff44960944bcf3ed597
+  - enabled: 1
+    path: Assets/Scenes/NGO/NgoTest.unity
+    guid: 94b42847c3b799d45bf1559818b6758b
+  - enabled: 1
+    path: Assets/Scenes/NGO/NgoLobbyScene.unity
+    guid: cfaaa9c2b684fde46a4dbe1e0d4d886e
+  - enabled: 1
+    path: Assets/Scenes/NGO/NgoRedVRRoom.unity
+    guid: bd7bd60b3d909844da885462126adddb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 58b75da5f7eed0f44aba7d79c13037b6, type: 2}
